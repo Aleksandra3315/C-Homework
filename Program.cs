@@ -1,137 +1,126 @@
-﻿// Задача 2. Напишите программу, которая на вход принимает два числа и выдаёт, 
-// какое число большее, а какое меньшее.
+﻿Задача 10: Напишите программу, которая принимает на вход трёхзначное число и на выходе показывает вторую цифру этого числа.
+456 -> 5
+782 -> 8
+918 -> 1
+*/
 
-// a = 5; b = 7 -> max = 7
-// a = 2 b = 10 -> max = 10
-// a = -9 b = -3 -> max = -3
-
-System.Console.WriteLine("Задача 2");
-System.Console.Write("Введите первое число: ");
-string? strNumber1_1 = Console.ReadLine();          // Int number = Convert.TOint32(Console.ReadLine()); - можно заменить так
-int Number1_1 = Convert.ToInt32(strNumber1_1);
-
-System.Console.Write("Введите второе число: ");
-string? strNumber1_2 = Console.ReadLine();
-int Number1_2 = Convert.ToInt32(strNumber1_2);
-
-if (Number1_1 > Number1_2)
+System.Console.WriteLine("-------Задача № 10-------");
+System.Console.Write("Введите трехзначное число: ");
+int numXXX;
+if (! int.TryParse(Console.ReadLine(), out numXXX))
 {
-    System.Console.WriteLine("max = " + Number1_1);
+  System.Console.WriteLine("Вы ввели не число!");
+  return;
 }
+
+int res = (numXXX / 10) % 10;
+
+if (numXXX / 100 < 1 || numXXX / 100 > 10)
+  System.Console.WriteLine("Вы ввели не трехзначное число!");
 else
-{
-    System.Console.WriteLine("max = " + Number1_2);
-}
+  System.Console.WriteLine($"Ответ: {res}");
 
-// Конец задачи 2.
+/*
+Задача 13: Напишите программу, которая выводит третью цифру заданного числа или сообщает, что третьей цифры нет.
+645 -> 5
+78 -> третьей цифры нет
+32679 -> 6
+*/
 
-// Задача 4: Напишите программу, которая принимает на вход три числа и выдаёт
-// максимальное из этих чисел.
-
-// 2, 3, 7 -> 7
-// 44 5 78 -> 78
-// 22 3 9 -> 22
-
-System.Console.WriteLine("Задача 4");
-System.Console.Write("Введите первое число: ");
-string? strNumber2_1 = Console.ReadLine();
-int Number2_1 = Convert.ToInt32(strNumber2_1);
-
-System.Console.Write("Введите второе число: ");
-string? strNumber2_2 = Console.ReadLine();
-int Number2_2 = Convert.ToInt32(strNumber2_2);
-
-System.Console.Write("Введите третье число: ");
-string? strNumber2_3 = Console.ReadLine();
-int Number2_3 = Convert.ToInt32(strNumber2_3);
-
-int max = Number2_1;
-
-if (Number2_2 > max) max = Number2_2;
-
-if (Number2_3 > max) max = Number2_3;
-
-Console.WriteLine("max = " + max);
-
-// Конец задачи 4.
-
-// Задача 6: Напишите программу, которая на вход принимает число и выдаёт,
-// является ли число чётным (делится ли оно на два без остатка).
-
-// 4 -> да
-// -3 -> нет
-// 7 -> нет
-
-System.Console.WriteLine("Задача 6");
+System.Console.WriteLine("-------Задача № 13-------");
 System.Console.Write("Введите число: ");
-string? strNumber3_1 = Console.ReadLine();
-int Number3_1 = Convert.ToInt32(strNumber3_1);
-
-if (Number3_1 % 2 == 0)
+int Value;
+if (!int.TryParse(Console.ReadLine(), out Value))
 {
-    System.Console.WriteLine("Да");
-}
-else
-{
-    System.Console.WriteLine("Нет");
-}
-
-// Конец задачи 6.
-
-// Задача 8: Напишите программу, которая на вход принимает число (N), а на выходе
-// показывает все чётные числа от 1 до N.
-
-// 5 -> 2, 4
-// 8 -> 2, 4, 6, 8
-
-System.Console.WriteLine("Задача 8");
-System.Console.Write("Введите число: ");
-string? strNumber4_1 = Console.ReadLine();
-int Number4_1 = Convert.ToInt32(strNumber4_1);
-
-if (Number4_1 <= 1)
-{
-    System.Console.WriteLine("Решений нет");
+    System.Console.WriteLine("Вы ввели не числовое значение!");
     return;
 }
 
+int ValueAbs = Math.Abs(Value);   // Это для того, чтобы проверять отрицательные
+
+if (ValueAbs < 100)
+{
+    System.Console.WriteLine("Третьей цифры нет.");
+    return;
+}
+
+while (ValueAbs > 999)
+{
+    if (ValueAbs > 999) ValueAbs /= 10;
+}
+
+System.Console.WriteLine($"Третья цифра в числе - {ValueAbs % 10}");
+
+/*
+Задача 15: Напишите программу, которая принимает на вход цифру, обозначающую день недели, и проверяет, является ли этот день выходным.
+6 -> да
+7 -> да
+1 -> нет
+*/
+
+System.Console.WriteLine("-------Задача № 15-------");
+System.Console.WriteLine("Вариант красивый");
+System.Console.Write("Какой по счету день недели? ");
+int DayOfWeek;
+if (! int.TryParse(Console.ReadLine(), out DayOfWeek))
+{
+  System.Console.WriteLine("Вы ввели не числовое значение!");
+  return;
+}
+
+switch (DayOfWeek)
+{
+    case 1:
+    System.Console.WriteLine("Сегодня понедельник, рабочий день(((");
+    break;
+    case 2:
+    System.Console.WriteLine("Сегодня вторник, рабочий день(((");
+    break;
+    case 3:
+    System.Console.WriteLine("Сегодня среда, рабочий день(((");
+    break;
+    case 4:                                                               // Это всё ооочень долго
+    System.Console.WriteLine("Сегодня четверг, рабочий день(((");
+    break;
+    case 5:
+    System.Console.WriteLine("Сегодня пятница, рабочий день(((");
+    break;
+    case 6:
+    System.Console.WriteLine("Сегодня суббота, ВЫХОДНОЙ!!!");
+    break;
+    case 7:
+    System.Console.WriteLine("Сегодня воскресенье, ВЫХОДНОЙ!!!");
+    break;
+    default:
+    System.Console.WriteLine("Нет такого дня недели!");
+    break;
+}
+
+/*
+Задача 15: Напишите программу, которая принимает на вход цифру, обозначающую день недели, и проверяет, является ли этот день выходным.
+6 -> да
+7 -> да
+1 -> нет
+*/
+
+System.Console.WriteLine("-------Задача № 15-------");
+System.Console.WriteLine("Вариант более короткий, оптимизированный");
+System.Console.Write("Какой по счету день недели? ");
+
+int DayOfWeek1;
+if (! int.TryParse(Console.ReadLine(), out DayOfWeek1))
+{
+  System.Console.WriteLine("Вы ввели не числовое значение!");
+  return;
+}
+
+if (DayOfWeek1 < 0 || DayOfWeek1 > 7)
+{
+  System.Console.WriteLine("Нет такого дня недели!");
+  return;
+}
+
+if (DayOfWeek1 == 6 || DayOfWeek1 == 7)
+System.Console.WriteLine("Ура, сегодня выходной!");
 else
-{
-    int count = 2;
-
-    while (count <= Number4_1)
-    {
-        System.Console.Write(count + ", ");
-        count = count + 2;
-    }
-}
-
-System.Console.WriteLine();
-
-// Конец задачи 8.
-
-// Второе решение задачи 8. Включая отрицательные N.
-// Задача 8: Напишите программу, которая на вход принимает число (N), а на выходе
-// показывает все чётные числа от 1 до N.
-
-// 5 -> 2, 4
-// 8 -> 2, 4, 6, 8
-
-System.Console.WriteLine("Задача 8. Решение 2");
-System.Console.Write("Введите число: ");
-string? strNumber4_2 = Console.ReadLine();
-int Number4_2 = Convert.ToInt32(strNumber4_2);
-
-
-int count2 = 2;
-int res = 0;
-
-if (Number4_2 == 1) System.Console.WriteLine("Решений нет");
-if (Number4_2 <= 0) count2 *= -1;
-if (Number4_2 > 0) res = 2;
-
-while (Math.Abs(res) <= Math.Abs(Number4_2))
-{
-    System.Console.Write(res + ", ");
-    res += count2;
-}
+System.Console.WriteLine("Сегодня рабочий день(((");
