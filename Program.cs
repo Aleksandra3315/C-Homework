@@ -1,126 +1,72 @@
-﻿Задача 10: Напишите программу, которая принимает на вход трёхзначное число и на выходе показывает вторую цифру этого числа.
-456 -> 5
-782 -> 8
-918 -> 1
+﻿/*
+Задача 19
+Напишите программу, которая принимает на вход пятизначное число и проверяет, является ли оно палиндромом.
+14212 -> нет
+12821 -> да
+23432 -> да
 */
 
-System.Console.WriteLine("-------Задача № 10-------");
-System.Console.Write("Введите трехзначное число: ");
-int numXXX;
-if (! int.TryParse(Console.ReadLine(), out numXXX))
-{
-  System.Console.WriteLine("Вы ввели не число!");
-  return;
-}
-
-int res = (numXXX / 10) % 10;
-
-if (numXXX / 100 < 1 || numXXX / 100 > 10)
-  System.Console.WriteLine("Вы ввели не трехзначное число!");
-else
-  System.Console.WriteLine($"Ответ: {res}");
-
-/*
-Задача 13: Напишите программу, которая выводит третью цифру заданного числа или сообщает, что третьей цифры нет.
-645 -> 5
-78 -> третьей цифры нет
-32679 -> 6
-*/
-
-System.Console.WriteLine("-------Задача № 13-------");
+System.Console.WriteLine("-------Задача № 19-------");
 System.Console.Write("Введите число: ");
-int Value;
-if (!int.TryParse(Console.ReadLine(), out Value))
+int Number = int.Parse(Console.ReadLine());
+int invert = 0;
+int temp = Number;
+
+while (temp > 0)
 {
-    System.Console.WriteLine("Вы ввели не числовое значение!");
-    return;
+    int intermediate = temp % 10;
+    temp = temp / 10;
+    invert = invert * 10 + intermediate;
 }
 
-int ValueAbs = Math.Abs(Value);   // Это для того, чтобы проверять отрицательные
-
-if (ValueAbs < 100)
-{
-    System.Console.WriteLine("Третьей цифры нет.");
-    return;
-}
-
-while (ValueAbs > 999)
-{
-    if (ValueAbs > 999) ValueAbs /= 10;
-}
-
-System.Console.WriteLine($"Третья цифра в числе - {ValueAbs % 10}");
+if (Number == invert) System.Console.WriteLine("Число является палиндромом");
+else System.Console.WriteLine("Число не является палиндромом");
 
 /*
-Задача 15: Напишите программу, которая принимает на вход цифру, обозначающую день недели, и проверяет, является ли этот день выходным.
-6 -> да
-7 -> да
-1 -> нет
+Задача 21
+Напишите программу, которая принимает на вход координаты двух точек и находит расстояние между ними в 3D пространстве.
+A (3,6,8); B (2,1,-7), -> 15.84
+A (7,-5, 0); B (1,-1,9) -> 11.53
 */
 
-System.Console.WriteLine("-------Задача № 15-------");
-System.Console.WriteLine("Вариант красивый");
-System.Console.Write("Какой по счету день недели? ");
-int DayOfWeek;
-if (! int.TryParse(Console.ReadLine(), out DayOfWeek))
-{
-  System.Console.WriteLine("Вы ввели не числовое значение!");
-  return;
-}
+System.Console.WriteLine("-------Задача № 21-------");
+System.Console.WriteLine("Введите координаты точки A");
+System.Console.WriteLine("Координата x");
+double coordxA = double.Parse(Console.ReadLine());
 
-switch (DayOfWeek)
-{
-    case 1:
-    System.Console.WriteLine("Сегодня понедельник, рабочий день(((");
-    break;
-    case 2:
-    System.Console.WriteLine("Сегодня вторник, рабочий день(((");
-    break;
-    case 3:
-    System.Console.WriteLine("Сегодня среда, рабочий день(((");
-    break;
-    case 4:                                                               // Это всё ооочень долго
-    System.Console.WriteLine("Сегодня четверг, рабочий день(((");
-    break;
-    case 5:
-    System.Console.WriteLine("Сегодня пятница, рабочий день(((");
-    break;
-    case 6:
-    System.Console.WriteLine("Сегодня суббота, ВЫХОДНОЙ!!!");
-    break;
-    case 7:
-    System.Console.WriteLine("Сегодня воскресенье, ВЫХОДНОЙ!!!");
-    break;
-    default:
-    System.Console.WriteLine("Нет такого дня недели!");
-    break;
-}
+System.Console.WriteLine("Координата y");
+double coordyA = double.Parse(Console.ReadLine());
+
+System.Console.WriteLine("Координата z");
+double coordzA = double.Parse(Console.ReadLine());
+
+System.Console.WriteLine("Введите координаты точки B");
+System.Console.WriteLine("Координата x");
+double coordxB = double.Parse(Console.ReadLine());
+
+System.Console.WriteLine("Координата y");
+double coordyB = double.Parse(Console.ReadLine());
+
+System.Console.WriteLine("Координата z");
+double coordzB = double.Parse(Console.ReadLine());
+
+System.Console.WriteLine($"Расстояние между точками = {Math.Sqrt(Math.Pow((coordxB - coordxA), 2) + Math.Pow((coordyB - coordyA), 2) + Math.Pow((coordzB - coordzA), 2))}");
 
 /*
-Задача 15: Напишите программу, которая принимает на вход цифру, обозначающую день недели, и проверяет, является ли этот день выходным.
-6 -> да
-7 -> да
-1 -> нет
+Задача 23
+Напишите программу, которая принимает на вход число (N) и выдаёт таблицу кубов чисел от 1 до N.
+3 -> 1, 8, 27
+5 -> 1, 8, 27, 64, 125
 */
 
-System.Console.WriteLine("-------Задача № 15-------");
-System.Console.WriteLine("Вариант более короткий, оптимизированный");
-System.Console.Write("Какой по счету день недели? ");
+System.Console.WriteLine("-------Задача № 23-------");
+System.Console.Write("Введите число: ");
+int NumberN = int.Parse(Console.ReadLine());
 
-int DayOfWeek1;
-if (! int.TryParse(Console.ReadLine(), out DayOfWeek1))
+double Cube = 1;
+
+while (Cube <= NumberN)
 {
-  System.Console.WriteLine("Вы ввели не числовое значение!");
-  return;
+    System.Console.Write(Math.Pow(Cube, 3) + " ");
+    Cube++;
 }
-
-if (DayOfWeek1 < 0 || DayOfWeek1 > 7)
-{
-  System.Console.WriteLine("Нет такого дня недели!");
-  return;
-}
-
-if (DayOfWeek1 == 6 || DayOfWeek1 == 7)
-System.Console.WriteLine("Ура, сегодня выходной!");
-else
-System.Console.WriteLine("Сегодня рабочий день(((");
