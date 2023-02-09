@@ -1,72 +1,97 @@
 ﻿/*
-Задача 19
-Напишите программу, которая принимает на вход пятизначное число и проверяет, является ли оно палиндромом.
-14212 -> нет
-12821 -> да
-23432 -> да
+Задача 25: Напишите цикл, который принимает на вход два числа (A и B) и возводит число A в натуральную степень B.
+3, 5 -> 243 (3⁵)
+2, 4 -> 16
 */
 
-System.Console.WriteLine("-------Задача № 19-------");
-System.Console.Write("Введите число: ");
-int Number = int.Parse(Console.ReadLine());
-int invert = 0;
-int temp = Number;
+System.Console.WriteLine("-------Задача № 25-------");
+System.Console.Write("Введите число A: ");
+int numA = int.Parse(Console.ReadLine());
 
-while (temp > 0)
+System.Console.Write("Введите число B: ");
+int numB = int.Parse(Console.ReadLine());
+
+int Exponentiation (int basis, int degree)
 {
-    int intermediate = temp % 10;
-    temp = temp / 10;
-    invert = invert * 10 + intermediate;
+  int result = 1;
+  for (int i = 1; i <= degree; i++)
+  {
+    result = result * basis;
+  }
+  return result;
 }
 
-if (Number == invert) System.Console.WriteLine("Число является палиндромом");
-else System.Console.WriteLine("Число не является палиндромом");
+System.Console.WriteLine($"A в степени B равно: {Exponentiation(numA, numB)}");
 
 /*
-Задача 21
-Напишите программу, которая принимает на вход координаты двух точек и находит расстояние между ними в 3D пространстве.
-A (3,6,8); B (2,1,-7), -> 15.84
-A (7,-5, 0); B (1,-1,9) -> 11.53
+Задача 27: Напишите программу, которая принимает на вход число и выдаёт сумму цифр в числе.
+452 -> 11
+82 -> 10
+9012 -> 12
 */
 
-System.Console.WriteLine("-------Задача № 21-------");
-System.Console.WriteLine("Введите координаты точки A");
-System.Console.WriteLine("Координата x");
-double coordxA = double.Parse(Console.ReadLine());
-
-System.Console.WriteLine("Координата y");
-double coordyA = double.Parse(Console.ReadLine());
-
-System.Console.WriteLine("Координата z");
-double coordzA = double.Parse(Console.ReadLine());
-
-System.Console.WriteLine("Введите координаты точки B");
-System.Console.WriteLine("Координата x");
-double coordxB = double.Parse(Console.ReadLine());
-
-System.Console.WriteLine("Координата y");
-double coordyB = double.Parse(Console.ReadLine());
-
-System.Console.WriteLine("Координата z");
-double coordzB = double.Parse(Console.ReadLine());
-
-System.Console.WriteLine($"Расстояние между точками = {Math.Sqrt(Math.Pow((coordxB - coordxA), 2) + Math.Pow((coordyB - coordyA), 2) + Math.Pow((coordzB - coordzA), 2))}");
-
-/*
-Задача 23
-Напишите программу, которая принимает на вход число (N) и выдаёт таблицу кубов чисел от 1 до N.
-3 -> 1, 8, 27
-5 -> 1, 8, 27, 64, 125
-*/
-
-System.Console.WriteLine("-------Задача № 23-------");
+System.Console.WriteLine("-------Задача № 27-------");
 System.Console.Write("Введите число: ");
-int NumberN = int.Parse(Console.ReadLine());
-
-double Cube = 1;
-
-while (Cube <= NumberN)
+int mean = int.Parse(Console.ReadLine());
+int Summa (int Number)
 {
-    System.Console.Write(Math.Pow(Cube, 3) + " ");
-    Cube++;
+  int result = 0;
+  for (; Number > 0; Number /= 10)
+  {
+   result = result + Number%10;
+  }
+  return result;
 }
+
+System.Console.WriteLine($"Сумма цифр в числе равна {Summa(mean)}");
+
+/*
+Задача 29: Напишите программу, которая задаёт массив из 8 элементов и выводит их на экран.
+1, 2, 5, 7, 19 -> [1, 2, 5, 7, 19]
+6, 1, 33 -> [6, 1, 33]
+*/
+
+System.Console.WriteLine("-------Задача № 29-------");
+int[] Array = new int[8];
+
+void Put (int [] Numbers)
+{
+  int length = Numbers.Length;
+  
+  for (int i = 0; i < length; i++)
+  {
+      Numbers[i] = new Random().Next(1, 10);
+  }
+  return;
+}
+
+void PutHands (int [] elements)
+{
+  int length = elements.Length;
+  
+  for (int i = 0; i < length; i++)
+  {
+      System.Console.WriteLine("Введите элемент: ");
+      elements[i] = int.Parse(Console.ReadLine());
+  }
+  return;
+}
+
+void Print (int[] point)
+{
+  int digit = point.Length;
+  for (int count = 0; count < digit; count++)
+  {
+      System.Console.Write(point[count] + " ");
+  }
+  return;
+}
+
+Put(Array);
+Print(Array);
+
+System.Console.WriteLine();
+System.Console.WriteLine("--------------Вариант с ручным вводом элементов--------------");
+
+PutHands(Array);
+Print(Array); 
